@@ -15,7 +15,7 @@ const Layout = () => {
           <li className="px-2">
             <Link to="/"><h1 className="text-xl">JIIT-NOW</h1></Link>
           </li>
-          <li className="px-2 text-xl" style={{paddingLeft: "1500px"}}>
+          <li className="px-2 text-xl" style={{paddingLeft: "1540px"}}>
             <Link to="/"><h1>Home</h1></Link>
           </li>
           <li className="px-2 text-xl">
