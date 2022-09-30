@@ -18,5 +18,6 @@
   },
   "homepage": "https://github.com/siddharth18235/Jiit-Blog#readme",
   "dependencies": {
+    "concurrently": "^7.4.0"
   }
 }

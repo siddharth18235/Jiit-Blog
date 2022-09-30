@@ -1,7 +1,12 @@
 import { Outlet, Link } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 // import { Highlight } from "@material-ui/icons";
 
 const Layout = () => {
+
+  const {user} = useAuth()
+  console.log(user);
+
   return (
     <div className="py-17">
     
@@ -10,17 +15,14 @@ const Layout = () => {
           <li className="px-2">
             <Link to="/"><h1 className="text-xl">JIIT-NOW</h1></Link>
           </li>
-          <li className="px-2 text-xl" style={{paddingLeft: "1520px"}}>
+          <li className="px-2 text-xl" style={{paddingLeft: "1500px"}}>
             <Link to="/"><h1>Home</h1></Link>
           </li>
           <li className="px-2 text-xl">
             <Link to="/form">Form</Link>
           </li>
           <li className="px-2 text-xl">
-            <Link to="/login">Login</Link>
-          </li>
-          <li className="px-2 text-xl">
-            <Link to="/signup">Signup</Link>
+            <Link to = "/setting">Hello {user.role.firstName}</Link>
           </li>
         </ul>
       </nav>

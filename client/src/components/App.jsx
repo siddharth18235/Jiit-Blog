@@ -8,9 +8,11 @@ import Layout from "./Layout";
 import Home from "./Home";
 import { useAuth } from "../context/authContext";
 import Redirect from "../pages/Redirect";
-import { setToken } from "../axiosDefault";
+import { setAxiosDefault, setToken } from "../axiosDefault";
+import Settings from "./Setting";
 function App() {
   const {user} = useAuth();
+  setAxiosDefault();
   if(user?.token) setToken(user.token)
   return (
     <React.Suspense fallback={
@@ -29,6 +31,8 @@ function App() {
               <Route index element={<Home />} />
               <Route path="form" element={<Form />} />
             </Route>
+            <Route path="setting" element={<Settings />} />
+            <Route path="*" element={<Redirect/>}/>
         </Routes>
         }
       <Footer />
