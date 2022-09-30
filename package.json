@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "start": "concurrently \"cd client && npm start\" \"cd server && npm start\"",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\""
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,5 @@
   },
   "homepage": "https://github.com/siddharth18235/Jiit-Blog#readme",
   "dependencies": {
-    "concurrently": "^7.3.0"
   }
 }
