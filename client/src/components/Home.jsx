@@ -23,7 +23,6 @@ function Home() {
 
     return (
         <div>
-          {/* <Header /> */}
             <CreateArea onAdd={addNote} />
             {notes.map((noteItem, index) => {
               return (
@@ -36,7 +35,6 @@ function Home() {
                 />
               );
             })}
-          {/* <Footer /> */}
         </div>
       );
     }

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import avatar from "../assets/images/maleavatar.png"
 const Settings = () => {
   return (
     <div className="mx-10 my-5">
@@ -10,8 +12,7 @@ const Settings = () => {
         role="tablist"
       >
         <li className="nav-item" role="presentation">
-          <a
-            href="/home"
+          <Link to ="/"
             className="
       nav-link
       block
@@ -35,7 +36,7 @@ const Settings = () => {
             aria-selected="true"
           >
             Home
-          </a>
+          </Link>
         </li>
         <li className="nav-item" role="presentation">
           <a
@@ -102,13 +103,13 @@ const Settings = () => {
         >
           <div className="grid md:grid-cols-2 max-w-[1240px] m-auto">
             <div className=" flex flex-col justify-left md:items-start w-full px-2 py-5">
-              <h1 className="text-1xl text-gray-300 md:flex mb-5">
+              <h1 className="text-1xl text-gray-600 md:flex mb-5">
                 GENERAL INFORMATION
               </h1>
               <div className="flex items-center">
                 <div className="flex ">
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                    src={avatar}
                     class="rounded-full w-32 mr-10 mb-10"
                     alt="Avatar"
                   />
