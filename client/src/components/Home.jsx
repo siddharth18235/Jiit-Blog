@@ -1,37 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Header from "./Header";
 // import Footer from "./Footer";
 import Note from "./Note";
-import CreateArea from "./CreateArea";
+import axios from "axios";
+import { useAuth } from "../context/authContext";
 
 function Home() {
     const [notes, setNotes] = useState([]);
-  
-    function addNote(newNote) {
-      setNotes(prevNotes => {
-        return [...prevNotes, newNote];
-      });
-    }
-  
-    function deleteNote(id) {
-      setNotes(prevNotes => {
-        return prevNotes.filter((noteItem, index) => {
-          return index !== id;
-        });
-      });
-    }
-
+    const {user} = useAuth();
+  useEffect(()=>{
+    axios.post('blog/listAll',{userId:user.role.userId}).then((res) =>{
+      setNotes(res.data.data.blogs)
+    })
+  },[])
     return (
         <div>
-            <CreateArea onAdd={addNote} />
             {notes.map((noteItem, index) => {
               return (
                 <Note
                   key={index}
-                  id={index}
+                  id={noteItem._id}
                   title={noteItem.title}
                   content={noteItem.content}
-                  onDelete={deleteNote}
                 />
               );
             })}

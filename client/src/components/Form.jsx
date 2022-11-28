@@ -1,22 +1,30 @@
+import axios from "axios";
 import React from "react";
 import {useForm} from "react-hook-form"
+import { useAuth } from "../context/authContext";
 function Form() {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const {user}=useAuth();
   const formSubmit = (data,e) => {
     e.preventDefault();
     console.log(data);
+    axios.post("blog/create",{...data,creator:user.role.userId}).then((res)=> {
+      console.log(res);
+    }).catch((err)=>{
+      console.log(err);
+    })
   }
   const submitError = (err,e) => {
     e.preventDefault();
     console.log(err);
   }
     return (
-        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden ">
+        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-indigo-600 lg:max-w-xl">
         <h1 className="text-3xl font-semibold text-center text-indigo-700 underline uppercase">
           Input Updates
         </h1>
-        <form className="mt-6" onSubmit={handleSubmit(formSubmit,submitError)}>
+        <form className="mt-6" onSubmit={handleSubmit(formSubmit,submitError)} autoComplete="off">
           <div className="mb-2">
             <label>
               <span className="text-gray-700">Title</span>
@@ -51,7 +59,7 @@ function Form() {
             <label>
               <span className="text-gray-700">Announcement</span>
               <textarea
-                name="announcement"
+                name="content"
                 className={`
             block
             w-full
@@ -68,8 +76,9 @@ function Form() {
             }
           `}
                 rows="5"
+                placeholder="Enter announcement"
                 {
-                  ...register("announcement",{
+                  ...register("content",{
                     required:"Announcement is required"
                   })
                 }
