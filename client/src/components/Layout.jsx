@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import image from "../assets/images/logo.png";
+import {NotificationsCircle} from "@styled-icons/ionicons-sharp"
 
 const Layout = () => {
 
@@ -26,7 +27,7 @@ const Layout = () => {
 
             <div
                 className="items-center md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0">
-                <Link to = "/"
+                {/* <Link to = "/"
                     className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
                     Home
                 </Link>
@@ -43,10 +44,15 @@ const Layout = () => {
                 <a href="https://www.jiit.ac.in/"
                     className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
                     About Us
-                </a>
+                </a> */}
             </div>
 
             <div className="flex items-center space-x-5  md:flex">
+                <div>
+                  <Link to  = "/notification">
+                    <NotificationsCircle width={40} />
+                  </Link>
+                </div>
                 <div
                     className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
                     
