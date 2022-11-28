@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const schema=mongoose.schema;
+const schema=mongoose.Schema;
 const autopopulate = require('mongoose-autopopulate')
 const BlogSchema=new schema({
     title:{
@@ -15,6 +15,12 @@ const BlogSchema=new schema({
         required: true,
         default: 0
     },
+    creator: {
+        type:mongoose.Schema.Types.ObjectId,
+        reference: 'User',
+        required:true,
+        autopopulate: true
+    },
     comments: {
         type: [mongoose.Schema.Types.ObjectId],
         reference: 'Blog',
@@ -24,4 +30,5 @@ const BlogSchema=new schema({
     
 });
 BlogSchema.plugin(autopopulate);
-module.exports = mongoose.model('Blog',BlogSchema);
+const Blog = mongoose.model('Blog',BlogSchema);
+module.exports = Blog;
