@@ -84,13 +84,13 @@ UserSchema.methods.generateJWT = function () {
 };
 
 UserSchema.methods.toAuthJSON = function () {
-  const { first_name, last_name, email, roleId, id, phone } = this;
+  const { firstName, lastName, email, roleId, id, phone } = this;
   return {
     role: {
       roleId,
       name: ROLES[roleId.toString()],
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       userId: id,
     },
     email,

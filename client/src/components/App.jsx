@@ -1,43 +1,44 @@
-import React, { useState } from "react";
-import Header from "./Header";
+import React from "react";
 import Footer from "./Footer";
-import Note from "./Note";
-import CreateArea from "./CreateArea";
-
+import { Routes, Route } from "react-router-dom";
+import Form from "./Form";
+import Login from "./Login";
+import Signup from "./Signup";
+import Layout from "./Layout"; 
+import Home from "./Home";
+import Notification from "./Notification";
+import { useAuth } from "../context/authContext";
+import Redirect from "../pages/Redirect";
+import { setAxiosDefault, setToken } from "../axiosDefault";
+import Settings from "./Setting";
 function App() {
-  const [notes, setNotes] = useState([]);
-
-  function addNote(newNote) {
-    setNotes(prevNotes => {
-      return [...prevNotes, newNote];
-    });
-  }
-
-  function deleteNote(id) {
-    setNotes(prevNotes => {
-      return prevNotes.filter((noteItem, index) => {
-        return index !== id;
-      });
-    });
-  }
-
+  const {user} = useAuth();
+  setAxiosDefault();
+  if(user?.token) setToken(user.token)
   return (
-    <div>
-      <Header />
-      <CreateArea onAdd={addNote} />
-      {notes.map((noteItem, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            title={noteItem.title}
-            content={noteItem.content}
-            onDelete={deleteNote}
-          />
-        );
-      })}
+    <React.Suspense fallback={
+      <div>Loading</div>
+    }>
+        {
+          !user?
+          <Routes>
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="*" element={<Redirect/>}/>
+          </Routes>
+          :
+        <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="form" element={<Form />} />
+              <Route path="notification" element={<Notification />} />
+            </Route>
+            <Route path="setting" element={<Settings />} />
+            <Route path="*" element={<Redirect/>}/>
+        </Routes>
+        }
       <Footer />
-    </div>
+    </React.Suspense>
   );
 }
 

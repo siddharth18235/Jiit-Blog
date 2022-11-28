@@ -10,7 +10,6 @@
   body {
     background: #eee;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-    padding: 0 16px;
   }
   
   header {
@@ -102,4 +101,16 @@
     outline: none;
   }
   
-  
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
+}
+
