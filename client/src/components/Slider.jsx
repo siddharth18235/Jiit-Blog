@@ -27,24 +27,24 @@ function Slider() {
     <div className="p-[10px]">
       <div
         id="carouselExampleSlidesOnly"
-        class="carousel slide relative"
+        className="carousel slide relative"
         data-bs-ride="carousel"
       >
-        <div class="carousel-inner relative w-full overflow-hidden">
-          <div class="carousel-item relative float-left w-full">
+        <div className="carousel-inner relative w-full overflow-hidden">
+          <div className="carousel-item relative float-left w-full">
             <img
               src={image1}
-              class="block w-full h-[500px]"
+              className="block w-full h-[500px]"
               alt="Wild Landscape"
             />
           </div>
-          <div class="carousel-item relative float-left w-full">
-            <img src={image2} class="block w-full h-[500px]" alt="Camera" />
+          <div className="carousel-item relative float-left w-full">
+            <img src={image2} className="block w-full h-[500px]" alt="Camera" />
           </div>
-          <div class="carousel-item relative float-left w-full">
+          <div className="carousel-item relative float-left w-full">
             <img
               src={image3}
-              class="block w-full h-[500px]"
+              className="block w-full h-[500px]"
               alt="Exotic Fruits"
             />
           </div>
