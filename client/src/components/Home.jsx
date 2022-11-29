@@ -41,6 +41,7 @@ function Home() {
                   id={noteItem._id}
                   title={noteItem.title}
                   content={noteItem.content}
+                  creatorName={noteItem.creatorName}
                 />
               );
             })}

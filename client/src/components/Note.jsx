@@ -12,17 +12,12 @@ function Note(props) {
         />
         <div className="p-6">
           <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-            Faculty Name
+            {props.creatorName}
           </h2>
           <h1 className="title-font text-lg font-medium text-gray-600 mb-3">
             {props.title}
           </h1>
-          <p className="leading-relaxed mb-3">
-            {props.content}Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry's standard
-            dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book.
-          </p>
+          <p className="leading-relaxed mb-3">{props.content}</p>
           <div className="flex items-center flex-wrap ">
             <button className="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg">
               Like
