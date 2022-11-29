@@ -32,16 +32,20 @@ function Home() {
         </Link>
       </div>
       <div>
-        {notes.map((noteItem, index) => {
-          return (
-            <Note
-              key={index}
-              id={noteItem._id}
-              title={noteItem.title}
-              content={noteItem.content}
-            />
-          );
-        })}
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-wrap -m-4">
+            {notes.map((noteItem, index) => {
+              return (
+                <Note
+                  key={index}
+                  id={noteItem._id}
+                  title={noteItem.title}
+                  content={noteItem.content}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
