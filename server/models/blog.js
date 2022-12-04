@@ -15,10 +15,17 @@ const BlogSchema = new schema({
     reference: "User",
     required: true,
   },
-  totalLikes: {
-    type: Number,
-    required: true,
-    default: 0,
+  likes: {
+    type: Array,
+    default: [],
+  },
+  dislikes: {
+    type: Array,
+    default: [],
+  },
+  branch:{
+    type: String,
+    default: "CSE"
   },
   creator: {
     type: mongoose.Schema.Types.ObjectId,
@@ -32,6 +39,8 @@ const BlogSchema = new schema({
     required: false,
     autopopulate: true,
   },
+},{
+  timestamps: true
 });
 BlogSchema.plugin(autopopulate);
 const Blog = mongoose.model("Blog", BlogSchema);

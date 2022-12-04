@@ -1,7 +1,13 @@
 const express = require('express');
-const { listAll,create } = require('../controllers/blog.controller');
+const { listAll,create, like, dislike } = require('../controllers/blog.controller');
+
 const blogRouter = express.Router();
 
-blogRouter.post('/listAll',listAll);
-blogRouter.post('/create',create);
+blogRouter.post('/like/:id', like);
+blogRouter.post('/dislike/:id', dislike);
+
+blogRouter.get('/',listAll);
+blogRouter.post('/',create);
+
+
 module.exports = blogRouter

@@ -10,6 +10,7 @@ import { useAuth } from "../context/authContext";
 import Redirect from "../pages/Redirect";
 import { setAxiosDefault, setToken } from "../axiosDefault";
 import Settings from "./Setting";
+
 function App() {
   const { user } = useAuth();
   setAxiosDefault();

@@ -6,12 +6,14 @@ import axios from "axios";
 import { useAuth } from "../context/authContext";
 import { Link } from "react-router-dom";
 import Slider from "./Slider";
+import Filter  from "./Filter";
 
-function Home() {
+function  Home() {
   const [notes, setNotes] = useState([]);
   const { user } = useAuth();
+  console.log("roleID", user.role.roleId);
   useEffect(() => {
-    axios.post("blog/listAll", { userId: user.role.userId }).then((res) => {
+    axios.get("blog", { userId: user.role.userId }).then((res) => {
       setNotes(res.data.data.blogs);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -20,7 +22,8 @@ function Home() {
     <div>
       <Slider />
       <div className="absolute right-[10px]">
-        <Link to="/form">
+        {
+          user.role.roleId === 3 &&  <Link to="/form">
           <button
             type="button"
             data-mdb-ripple="true"
@@ -30,18 +33,40 @@ function Home() {
             CREATE
           </button>
         </Link>
+        }
+        
       </div>
-      <div>
+      <div className="">
         <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
+        <Filter setNotes={setNotes} notes={notes} user={user}/>
+          <div className="flex flex-wrap m-4">
             {notes.map((noteItem, index) => {
+              let past = {
+                like: false,
+                dislike: false
+              }
+              if(noteItem.likes.find((val) => {
+                return val == user.role.userId
+              })){
+                past.like = true
+              }
+              if(noteItem.dislikes.find((val) => {
+                return val == user.role.userId
+              })){
+                past.dislike = true
+              }
+
               return (
                 <Note
                   key={index}
+                  past={past}
+                  likes = {noteItem.likes.length}
+                  dislikes = {noteItem.dislikes.length}
                   id={noteItem._id}
                   title={noteItem.title}
                   content={noteItem.content}
                   creatorName={noteItem.creatorName}
+
                 />
               );
             })}

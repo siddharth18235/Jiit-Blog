@@ -11,7 +11,8 @@ app.use(cors({
     origin: ALLOWED_URL
 }));
 
-app.use(APP_PREFIX_PATH,indexRoute);
+app.use(APP_PREFIX_PATH, indexRoute);
+
 app.use('/',(req,res,next)=>{
     res.send({"status":"path not found"})
 })

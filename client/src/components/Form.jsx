@@ -13,7 +13,7 @@ function Form() {
     e.preventDefault();
     console.log(data);
     axios
-      .post("blog/create", {
+      .post("blog", {
         ...data,
         creator: user.role.userId,
         creatorName: user.role.firstName,
@@ -96,7 +96,33 @@ function Form() {
               {errors.announcement ? errors.announcement.message : ""}
             </span>
           </div>
-
+          <div className="mb-2">
+            <label>
+              <span className="text-gray-700">Branch</span>
+              <input
+                type="text"
+                name="title"
+                className={` w-full
+            block px-16 py-2 mt-2
+            border-gray-300
+            rounded-md
+            shadow-sm
+            focus:border-indigo-300
+            focus:ring
+            focus:ring-indigo-200
+            focus:ring-opacity-50
+            ${errors.branch ? "!border-red-700" : ""}
+          `}
+                placeholder="Enter a branch"
+                {...register("branch", {
+                  required: "Branch is required",
+                })}
+              />
+            </label>
+            <span className="text-red-700">
+              {errors.branch ? errors.branch.message : ""}
+            </span>
+          </div>
           <div className="mb-6">
             <button
               type="submit"

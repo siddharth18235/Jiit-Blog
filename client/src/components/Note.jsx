@@ -1,5 +1,7 @@
 import React from "react";
 import picture from "../assets/images/default.png";
+import Like from "./LikeDislike/Like"
+import LikeAndDislike from "./LikeDislike/LikeAndDislike";
 
 function Note(props) {
   return (
@@ -18,11 +20,7 @@ function Note(props) {
             {props.title}
           </h1>
           <p className="leading-relaxed mb-3">{props.content}</p>
-          <div className="flex items-center flex-wrap ">
-            <button className="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg">
-              Like
-            </button>
-          </div>
+          <LikeAndDislike id={props.id} past={props.past} lk={props.likes} dlk={props.dislikes}/>
         </div>
       </div>
     </div>
