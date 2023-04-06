@@ -7,9 +7,7 @@ const indexRoute = require('./routes/index.route');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
-app.use(cors({
-    origin: ALLOWED_URL
-}));
+app.use(cors());
 
 app.use(APP_PREFIX_PATH, indexRoute);
 
